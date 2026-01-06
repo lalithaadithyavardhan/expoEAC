@@ -1,76 +1,79 @@
-# expo-cli
+# 📱 Android APK Build Guide (Expo EAS)
+
+This guide outlines the steps to build a standalone Android APK for this project using **EAS (Expo Application Services)**.
 
 
-🔹 Step 1: Install EAS CLI (one time)
+## 🛠️ Initial Setup (One-Time Only)
 
-Open Terminal / Command Prompt in your project folder and run:
+Follow these steps if you are setting up the project for the first time.
 
+### 1. Install EAS CLI
+Open your terminal or command prompt in the project folder and install the EAS CLI globally:
+
+```bash
 npm install -g eas-cli
+```
 
-
-Check installation:
-
+Verify the installation:
+```bash
 eas --version
+```
 
-🔹 Step 2: Login to Expo
+### 2. Login to Expo
+Authenticate with your Expo account:
+
+```bash
 expo login
+```
+> *Note: Log in with the same account used for development.*
 
+### 3. Configure EAS
+Generate the build configuration file (`eas.json`):
 
-(Login with the same account you used earlier)
-
-🔹 Step 3: Configure EAS (one time per project)
-
-Inside your project directory:
-
+```bash
 eas build:configure
+```
 
+**During configuration:**
+- ✅ It creates an `eas.json` file.
+- ✅ Choose **Android** when asked.
+- ✅ Select **APK** (not AAB) if prompted, or ensure your `eas.json` has a `preview` profile configured for APK generation.
 
-✔ This creates eas.json
-✔ Choose Android when asked
-✔ Select APK (not AAB)
+---
 
-🔹 Step 4: Build the APK
+## 🚀 Building the APK
 
-Now run:
+Perform these steps whenever you want to generate a new installable file.
 
+### 4. Start the Build
+Run the following command to build the APK using the preview profile:
+
+```bash
 eas build -p android --profile preview
+```
 
+**What happens next?**
+- ☁️ Expo uploads your latest code.
+- ⚙️ The cloud builder compiles your APK.
+- ⏳ **Wait time:** Approximately 5–10 minutes.
 
-What happens:
+### 5. Download & Install
+Once the build is complete:
+1. The terminal will show a **download link**.
+2. Or, visit your dashboard: Expo Builds → Projects → Builds.
+3. 📥 **Download** the `.apk` file.
+4. 📲 **Install** it directly on your Android phone.
 
-Expo uploads your latest updated code
+🎉 **DONE! Your updated app is ready.**
 
-Builds APK in the cloud
+---
 
-Takes 5–10 minutes
+## 🔁 Updating the App
 
+Every time you change your code and want a new APK, just run:
 
-
-🔹 Step 5: Download the APK
-
-After build finishes:
-
-Terminal shows a download link
-
-OR go to 👉 https://expo.dev/accounts
- → Projects → Builds
-
-📥 Download the .apk file
-📲 Install it on your phone
-
-🎉 DONE!
-
-Your new updated APK is ready.
-
-
-
-
-
-🔁 EVERY TIME YOU CHANGE CODE
-
-You only need one command again:
-
+```bash
 eas build -p android --profile preview
+```
 
-
-No QR, no reinstalling Expo Go.
+> No QR codes, no reinstalling Expo Go required.
